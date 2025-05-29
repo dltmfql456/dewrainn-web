@@ -3,4 +3,13 @@ name: Github Actions 실행시켜보기
 on: 
   push:
     branches:
-      -main
+      - main
+
+# Workflow는 여러개의 Job으로 이루어질 수있고
+jobs: 
+  My-Deploy-Job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hello World 출력하기
+        run: echo "Hello World"
