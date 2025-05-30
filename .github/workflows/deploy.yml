@@ -12,3 +12,6 @@ jobs:
     steps:
       - name: Github Repository 파일 불러오기
         uses: actions/checkout@v4 # Github Actions에도 다양한 라이브러리가 있음 -> Marketplace
+
+      - name: Repository 파일 출력하기 (위 명령어가 잘 수행됬는지 확인)
+        run: ls # 현재 위치나 특정 경로의 디렉토리 내용의 리스트 출력
