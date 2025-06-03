@@ -18,6 +18,9 @@ jobs:
       # - name: Repository 파일 출력하기 (위 명령어가 잘 수행됬는지 확인)
       #   run: ls # 현재 경로의 디렉토리의 파일 및 폴더 목록 출력
 
+      - name: 의존성 설치
+        run: npm install
+        
       - name: 빌드하기
         run: npm run build
 
