@@ -1,17 +1,28 @@
 name: Deploy To S3 And Invalidate Cloudfront
 
-on:
+# workflow 트리거 -> 언제 실행할지
+on: # on 키워드는 이벤트 트리거를 설정하는 역할
   push:
     branches:
       - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # GitHub이 제공하는 가상 머신 중 최신 우분투 환경에서 작업을 실행
 
     steps:
       - name: Github Repository 파일 불러오기
-        uses: actions/checkout@v4 # Github Actions에도 다양한 라이브러리가 있음 -> Marketplace
+        # Github Actions에도 다양한 라이브러리가 있음 -> Marketplace
+        uses: actions/checkout@v4 # 소스코드를 체크아웃(다운로드)하여 사용할 수 있게 해줌
 
-      - name: Repository 파일 출력하기 (위 명령어가 잘 수행됬는지 확인)
-        run: ls # 현재 위치나 특정 경로의 디렉토리 내용의 리스트 출력
+      # - name: Repository 파일 출력하기 (위 명령어가 잘 수행됬는지 확인)
+      #   run: ls # 현재 경로의 디렉토리의 파일 및 폴더 목록 출력
+
+      - name: 빌드하기
+        run: npm run build
+
+      - name: Debugging
+        run: |
+          ls
+          cd dist
+          ls
